@@ -1,0 +1,20 @@
+﻿@model Categoria
+
+@{
+    ViewData["Title"] = "Excluir Categoria";
+}
+
+<h2>Excluir Categoria</h2>
+
+<div class="alert alert-danger">
+    Tem certeza de que deseja excluir esta categoria?
+</div>
+
+<p><strong>Nome:</strong> @Model.Nome</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <button type="submit" class="btn btn-danger">Confirmar exclusão</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

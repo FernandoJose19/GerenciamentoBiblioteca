@@ -1,0 +1,56 @@
+﻿@model Livro
+
+@{
+    ViewData["Title"] = "Cadastrar Livro";
+}
+
+<h2>Cadastrar Livro</h2>
+
+<form asp-action="Create" method="post">
+
+    <div asp-validation-summary="All"
+         class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Titulo" class="form-label">Título</label>
+        <input asp-for="Titulo" class="form-control" />
+        <span asp-validation-for="Titulo" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="AutorId" class="form-label">Autor</label>
+        <select asp-for="AutorId" asp-items="ViewBag.Autores"
+                class="form-select">
+            <option value="">Selecione um autor</option>
+        </select>
+        <span asp-validation-for="AutorId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CategoriaId" class="form-label">Categoria</label>
+        <select asp-for="CategoriaId" asp-items="ViewBag.Categorias"
+                class="form-select">
+            <option value="">Selecione uma categoria</option>
+        </select>
+        <span asp-validation-for="CategoriaId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="QuantidadeTotal" class="form-label">
+            Quantidade total
+        </label>
+        <input asp-for="QuantidadeTotal" type="number"
+               class="form-control" min="0" />
+        <span asp-validation-for="QuantidadeTotal"
+              class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Salvar</button>
+
+    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

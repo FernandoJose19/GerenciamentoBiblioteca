@@ -1,0 +1,31 @@
+@model Leitor
+
+@{
+    ViewData["Title"] = "Excluir Leitor";
+}
+
+<h2>Excluir Leitor</h2>
+
+<div class="alert alert-danger">
+    A exclusão será definitiva. Os empréstimos associados a este registro também serão removidos. Deseja continuar?
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <p><strong>Nome:</strong> @Model.Nome</p>
+        <p><strong>Email:</strong> @Model.Email</p>
+        <p><strong>Telefone:</strong> @Model.Telefone</p>
+    </div>
+</div>
+
+<form asp-action="Delete" method="post" class="mt-3">
+
+    <input type="hidden" asp-for="Id" />
+
+    <button type="submit" class="btn btn-danger">
+        Confirmar exclusão
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+
+</form>

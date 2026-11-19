@@ -1,0 +1,28 @@
+﻿REVISÃO DE REGRAS DE ESTOQUE E CRUD – 12/11/2026
+
+1. LIVROS
+- QuantidadeTotal representa o acervo físico cadastrado e continua editável.
+- QuantidadeDisponivel não é editável na View; no cadastro começa igual ao total.
+- Em edição, o serviço recalcula disponíveis = total - empréstimos ativos.
+- Não permite reduzir o total abaixo da quantidade atualmente emprestada.
+- Livro com histórico não é apagado fisicamente: é inativado. Livro sem histórico pode ser excluído.
+- Livros inativos podem ser reativados e não aparecem para novos empréstimos.
+
+2. LEITORES
+- Leitor com histórico é inativado para preservar referências e histórico.
+- Leitor sem histórico pode ser excluído fisicamente.
+- Leitores inativos podem ser reativados e não podem receber novos empréstimos.
+
+3. EMPRÉSTIMOS
+- A listagem apresenta Editar e Excluir para empréstimos ativos; devolvidos exibem Excluir e Detalhes.
+- Edição é permitida somente enquanto ativo. Trocar livro ajusta os dois estoques dentro de transação.
+- Data original do empréstimo e data de devolução não são editáveis.
+- Excluir empréstimo ativo devolve uma unidade ao estoque na mesma transação; excluir devolvido não altera estoque.
+- Devolução duplica é bloqueada.
+
+4. BANCO DE DADOS
+- Foi adicionada migration 20261112190000_AdicionarStatusAtivo para colunas Ativo em Livros e Leitores, com default true para registros existentes.
+- Aplicar a migration no Visual Studio/Package Manager Console com Update-Database.
+
+5. LIMITAÇÃO DA VALIDAÇÃO
+- O ambiente de preparação não possui .NET SDK nem SQL Server LocalDB; não foi possível executar dotnet build, migrations ou testes HTTP/integração. É necessário validar no ambiente Visual Studio antes de substituir a versão anterior.

@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#17324d" />
+    <title>@ViewData["Title"] - Biblioteca MVC</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark app-navbar">
+        <div class="container">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index"><span class="brand-icon">📚</span> Biblioteca MVC</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Autores" asp-action="Index">Autores</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Categorias" asp-action="Index">Categorias</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Livros" asp-action="Index">Livros</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Leitores" asp-action="Index">Leitores</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="Emprestimos" asp-action="Index">Empréstimos</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container app-main">
+        @if (TempData["Sucesso"] != null) { <div class="alert alert-success alert-dismissible fade show app-alert" role="alert"><strong>Concluído!</strong> @TempData["Sucesso"]<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button></div> }
+        @if (TempData["Erro"] != null) { <div class="alert alert-danger alert-dismissible fade show app-alert" role="alert"><strong>Atenção:</strong> @TempData["Erro"]<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button></div> }
+        @if (TempData["Aviso"] != null) { <div class="alert alert-warning alert-dismissible fade show app-alert" role="alert">@TempData["Aviso"]<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button></div> }
+        @RenderBody()
+    </main>
+
+    <footer class="app-footer"><div class="container">Sistema de Gerenciamento de Biblioteca <span>© @DateTime.Now.Year</span></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

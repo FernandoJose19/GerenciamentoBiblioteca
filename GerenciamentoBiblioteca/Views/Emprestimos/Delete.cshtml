@@ -1,0 +1,42 @@
+﻿@model Emprestimo
+
+@{
+    ViewData["Title"] = "Excluir Empréstimo";
+}
+
+<div class="container mt-4">
+    <h2>Excluir Empréstimo</h2>
+
+    <div class="alert alert-warning">
+        Tem certeza de que deseja excluir este registro de empréstimo?
+    </div>
+    <div class="alert alert-info">
+        @(Model.DataDevolucao == null
+            ? "O empréstimo ainda está ativo. Ao excluir, uma unidade será devolvida automaticamente ao estoque."
+            : "O empréstimo já foi devolvido. A exclusão não altera a quantidade disponível.")
+    </div>
+
+    <dl class="row">
+        <dt class="col-sm-3">Livro</dt>
+        <dd class="col-sm-9">@Model.Livro?.Titulo</dd>
+
+        <dt class="col-sm-3">Leitor</dt>
+        <dd class="col-sm-9">@Model.Leitor?.Nome</dd>
+
+        <dt class="col-sm-3">Data do Empréstimo</dt>
+        <dd class="col-sm-9">@Model.DataEmprestimo.ToShortDateString()</dd>
+    </dl>
+
+    <form asp-action="Delete" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="Id" />
+
+        <button type="submit" class="btn btn-danger">
+            Confirmar Exclusão
+        </button>
+
+        <a asp-action="Index" class="btn btn-secondary">
+            Cancelar
+        </a>
+    </form>
+</div>

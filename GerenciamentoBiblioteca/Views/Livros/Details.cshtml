@@ -1,0 +1,29 @@
+﻿@model Livro
+
+@{
+    ViewData["Title"] = "Detalhes do Livro";
+}
+
+<h2>Detalhes do Livro</h2>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+
+        <h4>@Model.Titulo</h4>
+
+        <hr />
+
+        <p><strong>ID:</strong> @Model.Id</p>
+        <p><strong>Título:</strong> @Model.Titulo</p>
+        <p><strong>Autor:</strong> @Model.Autor?.Nome</p>
+        <p><strong>Categoria:</strong> @Model.Categoria?.Nome</p>
+        <p><strong>Quantidade total:</strong> @Model.QuantidadeTotal</p>
+        <p><strong>Disponíveis:</strong> @Model.QuantidadeDisponivel</p>
+
+    </div>
+</div>
+
+<a asp-action="Edit" asp-route-id="@Model.Id"
+   class="btn btn-warning mt-3">Editar</a>
+
+<a asp-action="Index" class="btn btn-secondary mt-3">Voltar</a>

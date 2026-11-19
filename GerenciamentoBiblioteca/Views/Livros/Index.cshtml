@@ -1,0 +1,44 @@
+@model IEnumerable<Livro>
+
+@{
+    ViewData["Title"] = "Livros";
+}
+
+<div class="d-flex justify-content-between mb-4">
+    <h2>📚 Livros cadastrados</h2>
+
+    <a asp-action="Create" class="btn btn-success">
+        + Novo Livro
+    </a>
+</div>
+
+<table class="table table-bordered table-striped bg-white">
+    <thead class="table-dark">
+        <tr>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Categoria</th>
+            <th>Total</th>
+            <th>Disponíveis</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var livro in Model)
+        {
+            <tr>
+                <td>@livro.Titulo</td>
+                <td>@livro.Autor?.Nome</td>
+                <td>@livro.Categoria?.Nome</td>
+                <td>@livro.QuantidadeTotal</td>
+                <td>@livro.QuantidadeDisponivel</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@livro.Id" class="btn btn-info btn-sm">Detalhes</a>
+                    <a asp-action="Edit" asp-route-id="@livro.Id" class="btn btn-warning btn-sm">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@livro.Id" class="btn btn-danger btn-sm">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

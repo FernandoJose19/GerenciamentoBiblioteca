@@ -1,0 +1,96 @@
+﻿@model Emprestimo
+
+@{
+    ViewData["Title"] = "Novo Empréstimo";
+}
+
+<div class="container">
+
+    <h2 class="mb-4">📖 Registrar Empréstimo</h2>
+
+    <div class="alert alert-info">
+        <strong>Informações importantes:</strong>
+        <ul class="mb-0">
+            <li>É necessário selecionar um livro disponível.</li>
+            <li>É necessário selecionar um leitor cadastrado.</li>
+            <li>O prazo padrão de devolução é de 7 dias.</li>
+            <li>A quantidade disponível será atualizada automaticamente.</li>
+        </ul>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+
+            <form asp-action="Create" method="post">
+
+                @Html.AntiForgeryToken()
+
+                <div asp-validation-summary="All"
+                     class="text-danger mb-3">
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="LivroId" class="form-label">
+                        Livro
+                    </label>
+
+                    <select asp-for="LivroId"
+                            asp-items="ViewBag.Livros"
+                            class="form-select">
+
+                        <option value="">Selecione um livro</option>
+
+                    </select>
+
+                    <span asp-validation-for="LivroId"
+                          class="text-danger">
+                    </span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="LeitorId" class="form-label">
+                        Leitor
+                    </label>
+
+                    <select asp-for="LeitorId"
+                            asp-items="ViewBag.Leitores"
+                            class="form-select">
+
+                        <option value="">Selecione um leitor</option>
+
+                    </select>
+
+                    <span asp-validation-for="LeitorId"
+                          class="text-danger">
+                    </span>
+                </div>
+
+                <div class="alert alert-secondary">
+                    <strong>Prazo de devolução:</strong>
+                    7 dias após a realização do empréstimo.
+                    <br />
+                    A data será calculada automaticamente pelo sistema.
+                </div>
+
+                <div class="d-flex gap-2">
+
+                    <button type="submit" class="btn btn-success">
+                        Registrar Empréstimo
+                    </button>
+
+                    <a asp-action="Index" class="btn btn-secondary">
+                        Voltar
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

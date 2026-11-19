@@ -1,0 +1,53 @@
+﻿@model Emprestimo
+
+@{
+    ViewData["Title"] = "Detalhes do Empréstimo";
+}
+
+<h2>Detalhes do Empréstimo</h2>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+
+        <p><strong>Código:</strong> @Model.Id</p>
+
+        <p><strong>Livro:</strong> @Model.Livro?.Titulo</p>
+
+        <p><strong>Leitor:</strong> @Model.Leitor?.Nome</p>
+
+        <p>
+            <strong>Data do empréstimo:</strong>
+            @Model.DataEmprestimo.ToString("dd/MM/yyyy")
+        </p>
+
+        <p>
+            <strong>Previsão de devolução:</strong>
+            @Model.DataPrevistaDevolucao.ToString("dd/MM/yyyy")
+        </p>
+
+        <p>
+            <strong>Data da devolução:</strong>
+            @(Model.DataDevolucao.HasValue
+                ? Model.DataDevolucao.Value.ToString("dd/MM/yyyy")
+                : "Ainda não devolvido")
+        </p>
+
+        <p>
+            <strong>Situação:</strong>
+
+            @if (Model.DataDevolucao.HasValue)
+            {
+                <span class="badge bg-success">Devolvido</span>
+            }
+            else
+            {
+                <span class="badge bg-warning text-dark">Emprestado</span>
+            }
+        </p>
+
+    </div>
+</div>
+
+<a asp-action="Index" class="btn btn-secondary mt-3">
+    Voltar
+</a>

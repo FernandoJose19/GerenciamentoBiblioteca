@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Página Inicial";
+}
+
+<section class="home-hero">
+    <div class="app-card-icon" style="width:4.5rem;height:4.5rem;font-size:2.35rem">📚</div>
+    <h1>Biblioteca MVC</h1>
+    <p class="lead mb-2">Sistema de Gerenciamento de Biblioteca</p>
+    <p class="text-secondary mb-0">Organize o acervo, acompanhe leitores e controle empréstimos em um só lugar.</p>
+</section>
+
+@* <div class="workflow-note mb-4" role="note">
+    <div class="d-flex gap-3 align-items-start">
+        <span class="fs-4" aria-hidden="true">💡</span>
+        <div>
+            <strong>Primeiros passos</strong>
+            <p class="mb-1">Para cadastrar livros, cadastre primeiro ao menos um autor e uma categoria. Para registrar empréstimos, tenha livros e leitores cadastrados.</p>
+            <span class="small"><strong>Ordem sugerida:</strong> Autores → Categorias → Livros → Leitores → Empréstimos.</span>
+        </div>
+    </div>
+</div>
+ *@
+<div class="row g-4">
+    <div class="col-12 col-sm-6 col-xl-4">
+        <div class="card app-card text-center"><div class="card-body">
+            <div class="app-card-icon">✍️</div><h3>Autores</h3><p>Cadastre e mantenha os autores das obras do acervo.</p>
+            <a asp-controller="Autores" asp-action="Index" class="btn btn-primary">Acessar autores</a>
+        </div></div>
+    </div>
+    <div class="col-12 col-sm-6 col-xl-4">
+        <div class="card app-card text-center"><div class="card-body">
+            <div class="app-card-icon">🏷️</div><h3>Categorias</h3><p>Organize os livros por assunto e categoria.</p>
+            <a asp-controller="Categorias" asp-action="Index" class="btn btn-primary">Acessar categorias</a>
+        </div></div>
+    </div>
+    <div class="col-12 col-sm-6 col-xl-4">
+        <div class="card app-card text-center"><div class="card-body">
+            <div class="app-card-icon">📚</div><h3>Livros</h3><p>Gerencie títulos, autores, categorias e exemplares.</p>
+            <a asp-controller="Livros" asp-action="Index" class="btn btn-primary">Acessar livros</a>
+        </div></div>
+    </div>
+    <div class="col-12 col-sm-6 col-xl-4">
+        <div class="card app-card text-center"><div class="card-body">
+            <div class="app-card-icon">👥</div><h3>Leitores</h3><p>Mantenha os dados dos leitores da biblioteca atualizados.</p>
+            <a asp-controller="Leitores" asp-action="Index" class="btn btn-primary">Acessar leitores</a>
+        </div></div>
+    </div>
+    <div class="col-12 col-sm-6 col-xl-4">
+        <div class="card app-card text-center"><div class="card-body">
+            <div class="app-card-icon">📖</div><h3>Empréstimos</h3><p>Registre empréstimos, acompanhe prazos e confirme devoluções.</p>
+            <a asp-controller="Emprestimos" asp-action="Index" class="btn btn-primary">Acessar empréstimos</a>
+        </div></div>
+    </div>
+</div>

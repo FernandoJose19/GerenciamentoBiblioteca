@@ -1,0 +1,225 @@
+
+/* ========================================
+   BIBLIOTECA DIGITAL
+   Identidade visual
+======================================== */
+
+:root {
+    --verde: #244638;
+    --verde-escuro: #183328;
+    --verde-claro: #e8f0e9;
+    --dourado: #bd9b5c;
+    --creme: #f7f5ef;
+    --branco: #ffffff;
+    --texto: #29362f;
+    --cinza: #78837c;
+    --borda: #e5e7df;
+    --sombra: 0 5px 20px rgba(30, 60, 45, .07);
+}
+
+/* BASE */
+
+body {
+    background: var(--creme);
+    color: var(--texto);
+    font-family: "Segoe UI", Arial, sans-serif;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+    color: var(--verde);
+    font-family: Georgia, serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* CABEÇALHO */
+
+.navbar {
+    background: var(--verde-escuro) !important;
+    padding: 16px 0;
+    border-bottom: 3px solid var(--dourado);
+    box-shadow: var(--sombra);
+}
+
+.navbar-brand {
+    color: white !important;
+    font-family: Georgia, serif;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.navbar .nav-link {
+    color: #e4ece6 !important;
+    margin-left: 8px;
+    padding: 10px 13px !important;
+    border-radius: 7px;
+    transition: .2s;
+}
+
+    .navbar .nav-link:hover {
+        background: rgba(255,255,255,.12);
+        color: white !important;
+    }
+
+/* CONTEÚDO */
+
+.container {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+main {
+    min-height: 70vh;
+}
+
+    main h2 {
+        font-size: 30px;
+        margin-bottom: 22px;
+        font-weight: 600;
+    }
+
+/* CARTÕES */
+
+.card {
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    background: var(--branco);
+    box-shadow: var(--sombra);
+    transition: transform .2s, box-shadow .2s;
+}
+
+    .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(30,60,45,.12);
+    }
+
+.card-header {
+    background: var(--verde);
+    color: white;
+    border-radius: 11px 11px 0 0 !important;
+    padding: 15px 20px;
+}
+
+/* TABELAS */
+
+.table {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+    .table thead th {
+        background: var(--verde);
+        color: white;
+        border: none;
+        padding: 14px;
+        font-weight: 600;
+    }
+
+    .table tbody td {
+        padding: 13px;
+        border-color: var(--borda);
+    }
+
+    .table tbody tr:hover {
+        background: var(--verde-claro);
+    }
+
+/* FORMULÁRIOS */
+
+.form-label {
+    color: var(--verde);
+    font-weight: 600;
+}
+
+.form-control,
+.form-select {
+    border: 1px solid #d6ded6;
+    border-radius: 8px;
+    padding: 11px 13px;
+}
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: var(--verde);
+        box-shadow: 0 0 0 3px rgba(36,70,56,.12);
+    }
+
+/* BOTÕES */
+
+.btn {
+    border-radius: 7px;
+    padding: 9px 16px;
+    font-weight: 600;
+    transition: .2s;
+}
+
+.btn-primary {
+    background: var(--verde);
+    border-color: var(--verde);
+}
+
+    .btn-primary:hover {
+        background: var(--verde-escuro);
+        border-color: var(--verde-escuro);
+    }
+
+.btn-success {
+    background: #477b5c;
+    border-color: #477b5c;
+}
+
+.btn-warning {
+    background: var(--dourado);
+    border-color: var(--dourado);
+    color: white;
+}
+
+.btn-danger {
+    background: #a94c45;
+    border-color: #a94c45;
+}
+
+/* ALERTAS */
+
+.alert {
+    border: none;
+    border-radius: 9px;
+    box-shadow: var(--sombra);
+}
+
+/* RODAPÉ */
+
+footer {
+    background: var(--verde-escuro);
+    color: #e4ece6;
+    padding: 22px 0;
+    margin-top: 45px;
+    text-align: center;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 768px) {
+    main h2 {
+        font-size: 24px;
+    }
+
+    .navbar .nav-link {
+        margin-left: 0;
+    }
+
+    .table {
+        font-size: 14px;
+    }
+
+    .btn {
+        margin-bottom: 4px;
+    }
+}
+
+

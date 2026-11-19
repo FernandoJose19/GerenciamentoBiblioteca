@@ -1,0 +1,57 @@
+﻿@model Autor
+
+@{
+    ViewData["Title"] = "Cadastrar Autor";
+}
+
+<div class="container">
+
+    <h2 class="mb-4">✍️ Cadastrar Autor</h2>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+
+            <form asp-controller="Autores"
+                  asp-action="Create"
+                  method="post">
+
+                @Html.AntiForgeryToken()
+
+                <div asp-validation-summary="All"
+                     class="alert alert-danger">
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Nome" class="form-label">
+                        Nome do autor
+                    </label>
+
+                    <input asp-for="Nome"
+                           class="form-control"
+                           placeholder="Digite o nome do autor" />
+
+                    <span asp-validation-for="Nome"
+                          class="text-danger">
+                    </span>
+                </div>
+
+                <button type="submit"
+                        class="btn btn-success">
+                    Salvar Autor
+                </button>
+
+                <a asp-controller="Autores"
+                   asp-action="Index"
+                   class="btn btn-secondary">
+                    Voltar
+                </a>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
